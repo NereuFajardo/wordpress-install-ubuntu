@@ -115,7 +115,6 @@ sudo systemctl restart apache2
 check_error "Apache restart"
 
 # Delet script
-cd
-rm -- "$0"
+rm -rf ~/wordpress-install-ubuntu
 
 echo "Wordpress Sucessfull install for $DOMAIN!"
