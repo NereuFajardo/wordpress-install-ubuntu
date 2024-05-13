@@ -15,6 +15,8 @@ This repository provides a script designed to streamline the process of setting 
 
 - **Open Source and Community-Driven**: Encourages community input and improvement, helping to refine the script over time through user contributions and feedback.
 
+- **[Wordpress Security Toolkit](https://github.com/NereuFajardo/wordpress-security-toolkit.git) Installed**: A suite of automated actions to ensure the security of your wordpress. 
+
 
 ## Before You Start
 
