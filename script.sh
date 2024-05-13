@@ -117,4 +117,35 @@ check_error "Apache restart"
 # Delet script
 rm -rf ~/wordpress-install-ubuntu
 
+# Install WordPress Security Toolkit
+if [ -d "/home/ubuntu/wordpress-security-toolkit" ]; then
+    echo "/home/ubuntu/wordpress-security-toolkit already exist."
+else
+    echo "/home/ubuntu/wordpress-security-toolkit don't exist. Creating..."
+
+    # 1. Cloning
+    git clone https://github.com/NereuFajardo/wordpress-security-toolkit.git /home/ubuntu/wordpress-security-toolkit
+
+    # 2. Open
+    cd /home/ubuntu/wordpress-security-toolkit || exit
+
+    # 3. Grant
+    chmod +x scripts/*.sh
+    chmod +x run.sh
+
+    # 4. Run
+    sudo ./run.sh
+
+    # 5. Cron Tab
+    crontab -e
+
+    # 6. Insert
+    echo "Configurando o cron job..."
+    echo "0 3 * * 0 /home/ubuntu/wordpress-security-toolkit/run.sh >> /var/log/run_sh_log.log 2>&1" >> temp_crontab
+    crontab temp_crontab
+    rm temp_crontab
+
+    echo "Wordpress Security Toolkit has done."
+fi
+
 echo "Wordpress Sucessfull install for $DOMAIN!"
